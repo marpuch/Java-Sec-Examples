@@ -7,7 +7,7 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.xml.sax.SAXException;
 
-public class Main {
+public class MainDom4j {
 
 	public static void main(String[] args) throws DocumentException, SAXException {
 		SAXReader reader = new SAXReader();
