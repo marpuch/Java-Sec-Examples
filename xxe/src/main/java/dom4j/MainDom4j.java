@@ -19,7 +19,7 @@ public class MainDom4j {
 		// http://www.saxproject.org/apidoc/org/xml/sax/package-summary.html#package_description
 		
 		// Following code fixes the issue
-		// reader.setFeature("http://xml.org/sax/features/external-general-entities", false);
+//		reader.setFeature("http://xml.org/sax/features/external-general-entities", false);
         Document document = reader.read("src\\main\\resources\\test.xml");
         treeWalk(document);
 	}
