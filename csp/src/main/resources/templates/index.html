@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Security Community - Simple page</title>
+
+<link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet" />
+<link th:href="@{css/jumbotron-narrow.css}" href="../static/css/jumbotron-narrow.css" rel="stylesheet" />
+<script th:src="@{js/own.js}" src="../static/js/own.js"></script>
+</head>
+
+<body onload="script();">
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a
+						href="mailto:DL PL TS-CSD-SECURITY-COMMUNITY">Contact</a></li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">Security Community @ NSC</h3>
+		</div>
+
+		<div class="jumbotron">
+			<h1>Content Security Policy (CSP)</h1>
+			<p class="lead">This example page shows some common CSP
+				directives and how to use them.</p>
+		</div>
+
+		<ul class="list-group">
+			<li id="inline" class="list-group-item list-group-item-danger"><span id="inline_s" class="badge">Fail</span>Inline script</li>
+			<li id="inline2" class="list-group-item list-group-item-danger"><span id="inline_s2" class="badge">Fail</span>Inline script (hash enable)</li>
+			<li id="inline4" class="list-group-item list-group-item-danger"><span id="inline_s4" class="badge">Fail</span>Inline script (nonce enable)</li>
+			<li id="inline3" class="list-group-item list-group-item-danger"><span id="inline_s3" class="badge">Fail</span>Script in separate file</li>
+		</ul>
+
+		<form role="form">
+			<div class="checkbox">
+				<label><input type="checkbox">script-src 'none'</label><br/>
+				<label><input type="checkbox">script-src 'self'</label><br/>
+				<label><input type="checkbox">script-src 'unsafe-inline'</label><br/>
+				<label><input type="checkbox">script-src 'sha256-U53QO64URPPK0Fh7tsq0QACAno68LrPc5G6Avyy07xs='</label><br/>
+				<label><input type="checkbox">script-src 'nonce-RANDOM_NONCE_VALUE'</label>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+
+		<br/>
+		<footer class="footer">
+			<p>&copy; 2016 Security Community @ NSC</p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+	
+	<script>
+		var inline = document.getElementById("inline"),
+	        inline_s = document.getElementById("inline_s");
+		inline.className = "list-group-item list-group-item-success";
+		inline_s.innerHTML = "Ok";
+	</script>
+
+	<script>
+		var inline2 = document.getElementById("inline2"),
+	        inline_s2 = document.getElementById("inline_s2");
+		inline2.className = "list-group-item list-group-item-success";
+		inline_s2.innerHTML = "Ok";
+	</script>
+
+	<script>
+		var inline4 = document.getElementById("inline4"),
+	        inline_s4 = document.getElementById("inline_s4");
+		inline4.className = "list-group-item list-group-item-success";
+		inline_s4.innerHTML = "Ok";
+	</script>
+
+</body>
+</html>
