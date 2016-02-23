@@ -10,12 +10,13 @@
 
 <title>Security Community - Simple page</title>
 
+<script th:src="@{js/jquery-1.12.1.min.js}" src="../static/js/jquery-1.12.1.min.js"></script>
 <link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet" />
 <link th:href="@{css/jumbotron-narrow.css}" href="../static/css/jumbotron-narrow.css" rel="stylesheet" />
 <script th:src="@{js/own.js}" src="../static/js/own.js"></script>
 </head>
 
-<body onload="script();">
+<body onload="script();"> <!-- This will simply not work if inline scripts are not allowed -->
 
 	<div class="container">
 		<div class="header clearfix">
@@ -35,19 +36,25 @@
 		</div>
 
 		<ul class="list-group">
+		    <li class="list-group-item">CSP header - <span th:text="${{header}}">Content-Security-Policy : 'none'</span></li>
 			<li id="inline" class="list-group-item list-group-item-danger"><span id="inline_s" class="badge">Fail</span>Inline script</li>
 			<li id="inline2" class="list-group-item list-group-item-danger"><span id="inline_s2" class="badge">Fail</span>Inline script (hash enable)</li>
 			<li id="inline4" class="list-group-item list-group-item-danger"><span id="inline_s4" class="badge">Fail</span>Inline script (nonce enable)</li>
 			<li id="inline3" class="list-group-item list-group-item-danger"><span id="inline_s3" class="badge">Fail</span>Script in separate file</li>
 		</ul>
 
-		<form role="form">
+		<form>
+			<input id="range" type="range" name="points" min="0" max="100" value="0" />
+			<label id="text">This text should be updated</label>
+		</form>
+
+		<form role="form" action="/" th:object="${bean}" method="GET">
 			<div class="checkbox">
-				<label><input type="checkbox">script-src 'none'</label><br/>
-				<label><input type="checkbox">script-src 'self'</label><br/>
-				<label><input type="checkbox">script-src 'unsafe-inline'</label><br/>
-				<label><input type="checkbox">script-src 'sha256-U53QO64URPPK0Fh7tsq0QACAno68LrPc5G6Avyy07xs='</label><br/>
-				<label><input type="checkbox">script-src 'nonce-RANDOM_NONCE_VALUE'</label>
+				<label><input type="checkbox" th:field="*{scriptSrcNone}">script-src 'none'</input></label><br/>
+				<label><input type="checkbox" th:field="*{scriptSrcSelf}">script-src 'self'</input></label><br/>
+				<label><input type="checkbox" th:field="*{scriptSrcUnsafeInline}">script-src 'unsafe-inline'</input></label><br/>
+				<label><input type="checkbox" th:field="*{scriptSrcSha}">script-src 'sha256-5E9nJofxZb0oXuLfXJaNsOERh6Cdc03bvYIgv0AyPho='</input></label><br/>
+				<label><input type="checkbox" th:field="*{scirptSrcNonce}">script-src 'nonce-RANDOM_NONCE_VALUE'</input></label>
 			</div>
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
@@ -74,7 +81,7 @@
 		inline_s2.innerHTML = "Ok";
 	</script>
 
-	<script>
+	<script th:attr="nonce=${{nonce}}" nonce="RANDOM_NONCE_VALUE">
 		var inline4 = document.getElementById("inline4"),
 	        inline_s4 = document.getElementById("inline_s4");
 		inline4.className = "list-group-item list-group-item-success";
