@@ -48,7 +48,7 @@
 			<label id="text">This text should be updated</label>
 		</form>
 
-		<form role="form" action="/" th:object="${bean}" method="GET">
+		<form role="form" action="." th:object="${bean}" method="GET">
 			<div class="checkbox">
 				<label><input type="checkbox" th:field="*{scriptSrcNone}">script-src 'none'</input></label><br/>
 				<label><input type="checkbox" th:field="*{scriptSrcSelf}">script-src 'self'</input></label><br/>
