@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Security Community - Simple page</title>
+
+<script th:src="@{js/jquery-1.12.1.min.js}" src="../static/js/jquery-1.12.1.min.js"></script>
+<link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet" />
+<link th:href="@{css/jumbotron-narrow.css}" href="../static/css/jumbotron-narrow.css" rel="stylesheet" />
+</head>
+
+<body onload="script();"> <!-- This will simply not work if inline scripts are not allowed -->
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a
+						href="mailto:DL PL TS-CSD-SECURITY-COMMUNITY">Contact</a></li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">Security Community @ NSC</h3>
+		</div>
+
+		<div class="jumbotron">
+			<h1>Crypto</h1>
+			<p class="lead"><a href="code.java">Broken encryption is broken.</a></p>
+		</div>
+
+		<p><b>Ciphertext to be decrypted (hex encoded):</b></p>
+		<p>a6f3879fc74e6b4a992b49d3a5c5e477e418da2242685fc9cb5cb2576f19ae28080f6d45f6c8b63df97037edf6e09
+		   635fbe13793ab59b5dfc5077a38dc93f55795afde960e208a93696f2f19f691549e54cdfe4839b798d832cdff9b59
+		   7ea96ee6e7b4f3088a384896644f0ca4349d92ec8176ca4ec8</p>
+		<form role="form" action="." th:object="${bean}" method="GET">
+			<label>Plaintext to be encrypted: <input type="text" th:field="*{text}" style="width:200%"></input></label><br/>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		<p th:text="${ciphertext}"></p>
+
+		<br/>
+		<footer class="footer">
+			<p>&copy; 2016 Security Community @ NSC</p>
+		</footer>
+
+	</div>
+	<!-- /container -->
+	
+</body>
+</html>
