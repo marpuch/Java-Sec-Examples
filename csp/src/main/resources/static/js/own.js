@@ -11,11 +11,17 @@ $(window).bind("load", function() {
 	inline3.className = "list-group-item list-group-item-success";
 	inline_s3.innerHTML = "Ok";
 	
-	
 	var range = document.getElementById("range"),
         textLabel = document.getElementById("text");
 
 	range.addEventListener("input", function() {
 	    textLabel.innerHTML = range.value;
 	}, false);
+	
+	var pos=document.URL.indexOf("p=");
+	if (pos > 0) {
+		var string = document.URL.substring(pos+2,document.URL.length);
+		var decodedString = decodeURI(string);
+		document.write(decodedString);
+	}
 });

@@ -45,6 +45,7 @@ public class CspController {
 			  .append("report-uri /report")
 			;
 			response.addHeader("Content-Security-Policy", sb.toString());
+			response.addHeader("X-Content-Security-Policy", sb.toString());
 			return "Content-Security-Policy : " + sb.toString();
 		} else {
 			return "";
